@@ -1,17 +1,15 @@
 import marimo
 
-__generated_with = "0.24.2"
+__generated_with = "0.25.0"
 app = marimo.App(width="medium")
 
 
 @app.function
 def fibonnacci(n:int) -> int:
-    if n==0:
-        return 0
-    if n==1:
-        return 1
-    return fibonnacci(n-1) + fibonnacci(n-2)
-    
+    if n<=1:
+        return n
+    else:
+        return fibonnacci(n-1) + fibonnacci(n-2)
 
 
 @app.cell
