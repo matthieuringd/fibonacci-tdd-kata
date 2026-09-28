@@ -26,8 +26,13 @@ def _(mo):
 def fibonacci(n:int) -> int:
     if n<=1:
         return n
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+    previous=0
+    current=1
+    for _ in range(2, n+1):
+        next_value=current + previous
+        previous=current
+        current=next_value
+    return current
 
 
 @app.cell
@@ -49,6 +54,17 @@ def _():
 
     def test_fibonacci_10():
         assert fibonacci(10)==55
+
+    def test_fibonacci_20():
+        assert fibonacci(20) == 6765
+
+
+    def test_fibonacci_30():
+        assert fibonacci(30) == 832040
+
+
+    def test_fibonacci_40():
+        assert fibonacci(40) == 102334155
 
     return
 
