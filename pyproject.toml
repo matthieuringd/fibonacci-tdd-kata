@@ -7,7 +7,9 @@ authors = [
     { name = "Matthieu Ringard", email = "matt33.ringard@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "marimo>=0.25.0",
+]
 
 [project.scripts]
 fibonnacci-tdd-kata = "fibonnacci_tdd_kata:main"
