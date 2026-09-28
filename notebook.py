@@ -4,6 +4,24 @@ __generated_with = "0.25.0"
 app = marimo.App(width="medium")
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # Fibonacci TDD Kata
+
+    This notebook implements the Fibonacci sequence using Test-Driven Development.
+
+    The Fibonacci sequence is defined by:
+
+    - F(0) = 0
+    - F(1) = 1
+    - F(n) = F(n-1) + F(n-2)
+
+    Use the widget below to calculate a Fibonacci number.
+    """)
+    return
+
+
 @app.function
 def fibonacci(n:int) -> int:
     if n<=1:
@@ -48,7 +66,6 @@ def _():
     )
 
     n_input
-
     return mo, n_input
 
 
