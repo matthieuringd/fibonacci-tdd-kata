@@ -99,5 +99,76 @@ def _(mo, n_input):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Fibonacci modulo for very large values
+
+    For very large values of `n`, computing the complete Fibonacci number
+    is inefficient and unnecessary.
+
+    We want to compute:
+
+    F(n) mod m
+
+    with:
+
+    - `m = 1,000,000,000`
+    - `0 <= n <= 10^18`
+
+    Because addition and multiplication are compatible with the modulo
+    operation, we can apply the modulo during the computation instead of
+    building the complete Fibonacci number.
+    """)
+    return
+
+
+@app.function
+def fibonacci_mod(n, m=1_000_000_000):
+    
+    """Return F(n) modulo m using the fast-doubling algorithm."""
+    
+    def compute_pair(n):
+        # Base case: F(0) = 0 and F(1) = 1
+        if n == 0:
+            return 0, 1
+
+        # Compute Fibonacci values for n // 2
+        fib_n, fib_next = compute_pair(n // 2)
+
+        # Fast doubling formulas
+        even_value = (fib_n * (2 * fib_next - fib_n)) % m
+        odd_value = (fib_n * fib_n + fib_next * fib_next) % m
+
+        if n % 2 == 0:
+            return even_value, odd_value
+        else:
+            return odd_value, (even_value + odd_value) % m
+
+    result, next_result = compute_pair(n)
+
+    return result
+
+
+@app.cell
+def _():
+    def test_fibonacci_mod_10():
+        assert fibonacci_mod(10) == 55
+
+
+    def test_fibonacci_mod_100():
+        assert fibonacci_mod(100) == 261915075
+
+
+    def test_fibonacci_mod_1000():
+        assert fibonacci_mod(1000) == 849228875
+
+
+    def test_fibonacci_mod_large():
+        assert fibonacci_mod(10**18) == 560546875
+
+    return
+
+
 if __name__ == "__main__":
     app.run()
