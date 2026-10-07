@@ -19,7 +19,7 @@ def _(mo):
 
     Use the widget below to calculate a Fibonacci number.
     """)
-    return
+    
 
 
 @app.function
@@ -66,12 +66,14 @@ def _():
     def test_fibonacci_40():
         assert fibonacci(40) == 102334155
 
-    return
+    
 
 
 @app.cell
 def _():
-    import marimo as mo 
+
+
+    import marimo as mo
 
     n_input = mo.ui.number(
         start=0,
@@ -81,7 +83,6 @@ def _():
         label="Choose a Fibonacci index:"
     )
 
-    n_input
     return mo, n_input
 
 
@@ -96,7 +97,7 @@ def _(mo, n_input):
         Fibonacci({n_input.value}) = **{result}**
         """
     )
-    return
+    
 
 
 @app.cell(hide_code=True)
@@ -120,7 +121,7 @@ def _(mo):
     operation, we can apply the modulo during the computation instead of
     building the complete Fibonacci number.
     """)
-    return
+    
 
 
 @app.function
@@ -145,7 +146,7 @@ def fibonacci_mod(n, m=1_000_000_000):
         else:
             return odd_value, (even_value + odd_value) % m
 
-    result, next_result = compute_pair(n)
+    result = compute_pair(n)
 
     return result
 
@@ -167,7 +168,7 @@ def _():
     def test_fibonacci_mod_large():
         assert fibonacci_mod(10**18) == 560546875
 
-    return
+    
 
 
 if __name__ == "__main__":
