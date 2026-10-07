@@ -13,6 +13,7 @@ dependencies = [
 
 [project.scripts]
 fibonacci-tdd-kata = "fibonacci_tdd_kata:main"
+fibonacci-kata = "fibonacci_kata.cli:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -24,6 +25,7 @@ packages = ["src/fibonacci_kata"]
 [dependency-groups]
 dev = [
     "marimo>=0.24.2",
+    "matplotlib>=3.11.2",
     "mypy>=2.4.0",
     "pytest-cov>=5.0",
     "pytest>=9.1.1",
@@ -57,4 +59,7 @@ source = ["src"]
 [tool.coverage.report]
 show_missing = true
 fail_under = 90
+
+[tool.marimo.runtime]
+pythonpath = ["src"]
 
