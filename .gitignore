@@ -1,16 +1,29 @@
-# Python-generated files
-__pycache__/
-*.py[cod]
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
+# Virtual environment
 .venv/
 
-# Test/cache files
-.pytest_cache/
+# Python cache
+__pycache__/
+*.py[cod]
 
-# Marimo-generated files
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ruff / mypy caches
+.ruff_cache/
+.mypy_cache/
+
+# Marimo temporary/session files
 __marimo__/
+.marimo/
+*.py.json
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
