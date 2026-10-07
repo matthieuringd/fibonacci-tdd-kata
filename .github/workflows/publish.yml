@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   test:
-    uses: ./.github/workflows/tests.yml   # re-run the full test workflow
+    uses: ./.github/workflows/test.yml   # re-run the full test workflow
 
   build-and-publish:
     needs: test                            # only runs if tests succeeded
