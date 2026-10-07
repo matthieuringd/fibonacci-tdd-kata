@@ -1,20 +1,19 @@
-def fibonacci(n:int) -> int:
-    if n<=1:
+def fibonacci(n: int) -> int:
+    if n <= 1:
         return n
-    previous=0
-    current=1
-    for _ in range(2, n+1):
-        next_value=current + previous
-        previous=current
-        current=next_value
+    previous = 0
+    current = 1
+    for _ in range(2, n + 1):
+        next_value = current + previous
+        previous = current
+        current = next_value
     return current
 
 
-def fibonacci_mod(n, m=1_000_000_000):
-    
+def fibonacci_mod(n: int, m: int = 1_000_000_000) -> int:
     """Return F(n) modulo m using the fast-doubling algorithm."""
-    
-    def compute_pair(n):
+
+    def compute_pair(n: int) -> tuple[int, int]:
         # Base case: F(0) = 0 and F(1) = 1
         if n == 0:
             return 0, 1
@@ -31,6 +30,5 @@ def fibonacci_mod(n, m=1_000_000_000):
         else:
             return odd_value, (even_value + odd_value) % m
 
-    
     fib_n, _ = compute_pair(n)
     return fib_n
