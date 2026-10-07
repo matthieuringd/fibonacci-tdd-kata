@@ -31,6 +31,6 @@ def fibonacci_mod(n, m=1_000_000_000):
         else:
             return odd_value, (even_value + odd_value) % m
 
-    result = compute_pair(n)
-
-    return result
+    
+    fib_n, _ = compute_pair(n)
+    return fib_n
