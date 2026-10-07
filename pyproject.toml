@@ -1,6 +1,6 @@
 [project]
-name = "fibonacci-kata"
-version = "0.1.0"
+name = "fibonacci-tdd-kata-matthieuringd"
+version = "0.1.2"
 description = "A test-driven Fibonacci kata with recursive, optimized, and modular implementations."
 readme = "README.md"
 authors = [
