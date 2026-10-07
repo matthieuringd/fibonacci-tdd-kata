@@ -19,69 +19,57 @@ def _(mo):
 
     Use the widget below to calculate a Fibonacci number.
     """)
-    
 
 
 @app.function
-def fibonacci(n:int) -> int:
-    if n<=1:
+def fibonacci(n: int) -> int:
+    if n <= 1:
         return n
-    previous=0
-    current=1
-    for _ in range(2, n+1):
-        next_value=current + previous
-        previous=current
-        current=next_value
+    previous = 0
+    current = 1
+    for _ in range(2, n + 1):
+        next_value = current + previous
+        previous = current
+        current = next_value
     return current
 
 
 @app.cell
 def _():
     def test_fibonacci_0():
-        assert fibonacci(0)==0
+        assert fibonacci(0) == 0
 
     def test_fibonacci_1():
-        assert fibonacci(1)==1
+        assert fibonacci(1) == 1
 
     def test_fibonacci_2():
-        assert fibonacci(2)==1
+        assert fibonacci(2) == 1
 
     def test_fibonacci_3():
-        assert fibonacci(3)==2
+        assert fibonacci(3) == 2
 
     def test_fibonacci_5():
-        assert fibonacci(5)==5
+        assert fibonacci(5) == 5
 
     def test_fibonacci_10():
-        assert fibonacci(10)==55
+        assert fibonacci(10) == 55
 
     def test_fibonacci_20():
         assert fibonacci(20) == 6765
 
-
     def test_fibonacci_30():
         assert fibonacci(30) == 832040
 
-
     def test_fibonacci_40():
         assert fibonacci(40) == 102334155
-
-    
 
 
 @app.cell
 def _():
 
-
     import marimo as mo
 
-    n_input = mo.ui.number(
-        start=0,
-        stop=30,
-        step=1,
-        value=10,
-        label="Choose a Fibonacci index:"
-    )
+    n_input = mo.ui.number(start=0, stop=30, step=1, value=10, label="Choose a Fibonacci index:")
 
     return mo, n_input
 
@@ -97,7 +85,6 @@ def _(mo, n_input):
         Fibonacci({n_input.value}) = **{result}**
         """
     )
-    
 
 
 @app.cell(hide_code=True)
@@ -121,15 +108,13 @@ def _(mo):
     operation, we can apply the modulo during the computation instead of
     building the complete Fibonacci number.
     """)
-    
 
 
 @app.function
-def fibonacci_mod(n, m=1_000_000_000):
-    
+def fibonacci_mod(n: int, m: int = 1_000_000_000) -> int:
     """Return F(n) modulo m using the fast-doubling algorithm."""
-    
-    def compute_pair(n):
+
+    def compute_pair(n: int) -> tuple[int, int]:
         # Base case: F(0) = 0 and F(1) = 1
         if n == 0:
             return 0, 1
@@ -156,19 +141,14 @@ def _():
     def test_fibonacci_mod_10():
         assert fibonacci_mod(10) == 55
 
-
     def test_fibonacci_mod_100():
         assert fibonacci_mod(100) == 261915075
-
 
     def test_fibonacci_mod_1000():
         assert fibonacci_mod(1000) == 849228875
 
-
     def test_fibonacci_mod_large():
         assert fibonacci_mod(10**18) == 560546875
-
-    
 
 
 if __name__ == "__main__":
